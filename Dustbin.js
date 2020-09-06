@@ -31,7 +31,7 @@ class Dustbin{
         rectMode(CENTER)
         fill("white");
 
-        Image(this.image, 0, 0, this.width, this.height);
+        image(this.image, 0, 0, this.width, this.height);
 
         pop();
     }
