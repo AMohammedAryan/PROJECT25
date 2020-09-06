@@ -46,7 +46,7 @@ function draw() {
 
   ground.display();
 
-  //keyPressed();
+  keyPressed();
   
   drawSprites();
 }
