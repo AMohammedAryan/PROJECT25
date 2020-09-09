@@ -21,9 +21,9 @@ function setup() {
 	//Create the Bodies Here.
 
 	crumbledPaper = new Paper(100, 450, 40);
-	dustbinBase = new Dustbin(650, 650, 160, 40);
-	dustbinLeft = new Dustbin(550, 640, 40, 160);
-	dustbinRight = new Dustbin(750, 640, 40, 160);
+	dustbinBase = new Dustbin(650, 470, 160, 200);
+	dustbinLeft = new Dustbin(550, 460, 40, 160);
+	dustbinRight = new Dustbin(750, 460, 40, 160);
 
 	ground = new Ground();
 
@@ -37,14 +37,16 @@ function draw() {
   Engine.update(engine);
 
   rectMode(CENTER);
-  background(0);
+  background(255);
 
-  crumbledPaper.display();
-  dustbinBase.display();
-  dustbinLeft.display();
-  dustbinRight.display();
+  //dustbinLeft.display();
+  //dustbinRight.display();
 
   ground.display();
+
+  crumbledPaper.display();
+
+  dustbinBase.display();
 
   keyPressed();
   
