@@ -1,58 +1,37 @@
-const Engine = Matter.Engine;
-const World = Matter.World;
-const Bodies = Matter.Bodies;
-const Body = Matter.Body;
+class Paper{
 
-var crumbledPaper, dustbinBase, dustbinLeft, dustbinRight;
-var ground;
+    constructor(x, y, r){
 
-function preload()
-{
-	
-}
+        var options ={
+            density:1.2,
+            friction:0.5,
+            restitution:0.3,
+            isStatic:false
+        }
 
-function setup() {
-	createCanvas(800, 700);
+        this.x = x;
+        this.y = y;
+        this.r = r;
 
+        this.body = Bodies.circle(x, y, r/2, options);
 
-	engine = Engine.create();
-	world = engine.world;
+        this.image = loadImage("paper.png");
 
-	//Create the Bodies Here.
+        World.add(world, this.body);
+    }
 
-	crumbledPaper = new Paper(100, 450, 40);
-	dustbinBase = new Dustbin(550, 470, 160, 200);
-	dustbinLeft = new Dustbin(550, 460, 40, 160);
-	dustbinRight = new Dustbin(650, 460, 40, 160);
+    display(){
 
-	ground = new Ground();
+        var pos = this.body.position;
+        var angle = this.body.angle;
 
-	Engine.run(engine);
-  
-}
+        push()
 
+        translate(pos.x, pos.y);
+        rotate(angle);
+        
+        image(this.image, 0, 0, this.r, this.r);
 
-function draw() {
-
-  Engine.update(engine);
-
-  rectMode(CENTER);
-  background(255);
-
-  //dustbinLeft.display();
-  //dustbinRight.display();
-
-  ground.display();
-
-  crumbledPaper.display();
-
-  dustbinBase.display();
-  
-  drawSprites();
-}
-
-function keyPressed(){
-
-	if(keyCode === UP_ARROW){
-		Body.applyForce(crumbledPaper.body, crumbledPaper.body.position, {x:85, y:-85});}
+        pop()
+    }
 }
